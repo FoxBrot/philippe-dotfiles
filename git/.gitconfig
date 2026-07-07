@@ -1,0 +1,12 @@
+[user]
+    name = Philippe Pereira
+    email = pereira.philippe200702@gmail.com
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = false
+
+[core]
+    editor = nano
