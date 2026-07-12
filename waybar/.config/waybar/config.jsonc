@@ -1,0 +1,174 @@
+// -*- mode: jsonc -*-
+//////////////////////////////////////////////////////////////////////////
+//  __       __                      __                                 //
+// /  |  _  /  |                    /  |                                //
+// $$ | / \ $$ |  ______   __    __ $$ |____    ______    ______        //
+// $$ |/$  \$$ | /      \ /  |  /  |$$      \  /      \  /      \       //
+// $$ /$$$  $$ |/$$$$$$  |$$ |  $$ |$$$$$$$  | $$$$$$  |/$$$$$$  |      //
+// $$ $$/$$ $$ |$$    $$ |$$ |  $$ |$$ |  $$ | /    $$ |$$ |  $$/       //
+// $$$$/  $$$$ |$$$$$$$$/ $$ \__$$ |$$ |__$$ |/$$$$$$$ |$$ |            //
+// $$$/    $$$ |$$       |$$    $$ |$$    $$/ $$    $$ |$$ |            //
+// $$/      $$/  $$$$$$$/  $$$$$$$ |$$$$$$$/   $$$$$$$/ $$/             //
+//                        /  \__$$ |                                    //
+//                        $$    $$/                                     //
+//                         $$$$$$/                                      //
+//////////////////////////////////////////////////////////////////////////
+
+{
+    // ======================================================
+    // General Settings
+    // ======================================================
+
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "margin-top": 8,
+    "margin-left": 12,
+    "margin-right": 15,
+    "margin-bottom": 0,
+    "spacing": 8,
+
+    // ======================================================
+    // Layout
+    // ======================================================
+
+    "modules-left": [
+        "custom/launcher",
+        "wlr/taskbar",
+        "custom/browser",
+        "hyprland/window"
+    ],
+
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-right": [
+        "custom/updates",
+        "pulseaudio",
+        "temperature",
+        "memory",
+        "cpu",
+        "network",
+        "clock",
+        "custom/power"
+    ],
+
+    // ======================================================
+    // Left Modules
+    // ======================================================
+
+    "custom/launcher": {
+        "format": "Apps",
+        "tooltip": false,
+        "on-click": "rofi -show drun"
+    },
+
+    "wlr/taskbar": {
+        "all-outputs": true,
+        "icon-size": 18,
+        "tooltip": false,
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": [
+            "waybar"
+        ]
+    },
+
+    "custom/browser": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "~/.config/waybar/scripts/browser.sh"
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50,
+        "separate-outputs": false
+    },
+
+    // ======================================================
+    // Center Modules
+    // ======================================================
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": "",
+            "urgent": ""
+        }
+    },
+
+    // ======================================================
+    // Right Modules
+    // ======================================================
+
+    "custom/updates": {
+        "exec": "~/.config/waybar/scripts/updates.sh",
+        "interval": 600,
+        "return-type": "json",
+        "tooltip": true,
+        "on-click": "kitty -e ~/.config/waybar/scripts/update.sh",
+        "signal": 8
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "󰂑",
+            "headset": "󰂑",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "tooltip": false,
+        "scroll-step": 5,
+        "on-click": "pavucontrol"
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": " {temperatureC}°C",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "󰍛 {}%",
+        "tooltip": false
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "format-linked": "󰈀 No IP",
+        "format-disconnected": "󰖪 Offline",
+        "tooltip-format": "{ifname}\nIP: {ipaddr}\nGateway: {gwaddr}"
+    },
+
+    "clock": {
+        "format": "󰥔 {:%H:%M}",
+        "tooltip-format": "<big>{:%A, %d %B %Y}</big>\n<tt>{calendar}</tt>"
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "~/.config/waybar/scripts/powermenu.sh"
+    }
+}

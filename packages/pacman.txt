@@ -1,0 +1,14 @@
+waybar
+ttf-jetbrains-mono-nerd
+kitty
+git
+neovim
+fastfetch
+btop
+fzf
+ripgrep
+fd
+bat
+eza
+zoxide
+pacman-contrib

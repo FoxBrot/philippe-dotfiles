@@ -1,0 +1,190 @@
+/*   ______    __                __
+ //  /      \  /  |              /  |
+ // /$$$$$$  |_$$ |_    __    __ $$ |  ______
+ // $$ \__$$// $$   |  /  |  /  |$$ | /      \
+ // $$      \$$$$$$/   $$ |  $$ |$$ |/$$$$$$  |
+ //  $$$$$$  | $$ | __ $$ |  $$ |$$ |$$    $$ |
+ // /  \__$$ | $$ |/  |$$ \__$$ |$$ |$$$$$$$$/
+ // $$    $$/  $$  $$/ $$    $$ |$$ |$$
+ //  $$$$$$/    $$$$/   $$$$$$$ |$$/  $$$$$$$/
+ //                    /  \__$$ |
+ //                    $$    $$/
+ //                     $$$$$$/
+ //
+ //  by Philippe Pereira (FoxBrot) (2026)
+ // ===========================================================
+ */
+
+@define-color pill-bg     #cfc2a6; /* darker fill for pilled modules */
+@define-color pill-border #ebe3d3; /* lighter border/bg color */
+@define-color grey        #8a8377; /* dark — selected workspace */
+
+@define-color fg          #2e2b26;
+@define-color fg-dim      #6b6559;
+@define-color white       #ffffff;
+@define-color accent      #d9822e;
+@define-color danger      #c65b4e;
+
+/* ======================================================
+   Global
+====================================================== */
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 15px;
+    font-weight: 600;
+    min-height: 0;
+    border: none;
+}
+
+/* ======================================================
+   Waybar Window — transparent; floating surface is the box
+====================================================== */
+window#waybar {
+    background: transparent;
+    color: @fg;
+}
+
+window#waybar > box {
+    background: transparent;
+    padding: 0 8px;
+}
+
+/* ======================================================
+   Pilled Modules (launcher, taskbar, ip, time)
+====================================================== */
+#custom-launcher,
+#taskbar,
+#network,
+#clock {
+    background: @pill-bg;
+    color: @fg;
+    border: 3px solid @pill-border;
+    border-radius: 999px;
+    padding: 0px 5px;
+    margin: 6px 3px 6px 3px;
+    transition: border-color 0.2s ease-in-out;
+}
+
+#custom-launcher {
+    margin: 6px 3px 6px 3px;
+    font-weight: 700;
+}
+
+#custom-launcher:hover {
+    border-color: @grey;
+}
+
+#taskbar {
+    padding: 0px 3px;
+}
+
+#taskbar item {
+    padding: 0 2px;
+    border-radius: 999px;
+    opacity: 0.85;
+}
+
+#taskbar item.active {
+    opacity: 1;
+}
+
+#network {
+    color: @fg-dim;
+}
+
+#network.disconnected {
+    color: @danger;
+    border-color: @danger;
+}
+
+#clock {
+    font-weight: 700;
+}
+
+/* ======================================================
+   Border-colored bg modules (window, pulseaudio)
+====================================================== */
+#window,
+#pulseaudio {
+    background: @pill-border;
+    border-radius: 999px;
+    padding: 0px 5px;
+    margin: 6px 2px 6px 2px;
+}
+
+#window {
+    color: @fg-dim;
+    font-weight: 500;
+}
+
+#pulseaudio {
+    color: @accent;
+}
+
+#pulseaudio.muted {
+    color: @fg-dim;
+}
+
+/* ======================================================
+   Flat Modules — white text/icons, no background
+====================================================== */
+#custom-browser,
+#temperature,
+#cpu,
+#memory,
+#custom-updates,
+#custom-power {
+    background: transparent;
+    color: @white;
+    padding: 0px 4px;
+    margin: 6px 1px 6px 1px;
+}
+
+#temperature.critical {
+    color: @danger;
+}
+
+#custom-browser {
+    margin-right: 10px;
+    font-size: 19px;
+}
+
+#custom-power {
+    margin: 6px 3px 6px 1px;
+    font-size: 19px;
+}
+
+#custom-power:hover {
+    color: @danger;
+}
+
+/* ======================================================
+   Workspaces — pill container, dot/capsule indicators
+====================================================== */
+#workspaces {
+    background: @pill-border;
+    border-radius: 999px;
+    padding: 0px 5px;
+    margin: 6px 3px 6px 3px;
+}
+
+#workspaces button {
+    background: #b8b2a7;              /* not selected — circle */
+    color: transparent;
+    font-size: 0;
+    min-width: 16px;
+    min-height: 16px;
+    padding: 0;
+    margin: 6px 2px 6px 2px;
+    border-radius: 999px;
+    transition: background 0.2s ease-in-out;
+}
+
+#workspaces button.active {
+    background: @grey;                /* selected — wide pill */
+    min-width: 42px;
+}
+
+#workspaces button:hover {
+    background: @fg-dim;
+}

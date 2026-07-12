@@ -16,11 +16,19 @@
 ------------------
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
+--
 hl.monitor({
-    output   = "",
-    mode     = "preferred",
-    position = "auto",
-    scale    = "auto",
+    output   = "HDMI-A-1",
+    mode     = "1920x1080@144",
+    position = "0x180",
+    scale    = 1,
+})
+
+hl.monitor({
+    output   = "DP-1",
+    mode     = "2560x1440@165",
+    position = "1920x0",
+    scale    = 1,
 })
 
 
@@ -264,6 +272,8 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+
+hl.bind("CTRL + Home", hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]]))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
