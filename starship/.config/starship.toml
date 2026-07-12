@@ -1,0 +1,59 @@
+# ============================================================
+# starship.toml — powerline prompt
+# by Philippe Pereira (FoxBrot) (2026)
+# Segments: os > directory > git > time
+# ============================================================
+
+format = """
+[](#8a8377)\
+$os\
+[](bg:#cfc2a6 fg:#8a8377)\
+$directory\
+[](bg:#55524b fg:#cfc2a6)\
+$git_branch\
+$git_status\
+[](bg:#2a2a3c fg:#55524b)\
+$time\
+[ ](fg:#2a2a3c)\
+$line_break\
+$character"""
+
+[os]
+disabled = false
+style = "bg:#8a8377 fg:#1e1e2e"
+format = "[ $symbol ]($style)"
+
+[os.symbols]
+Arch = "󰣇"
+
+[directory]
+style = "bg:#cfc2a6 fg:#2e2b26"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙"
+"Downloads" = ""
+"Music" = ""
+"Pictures" = ""
+"Projects" = ""
+
+[git_branch]
+symbol = ""
+style = "bg:#55524b fg:#ebe3d3"
+format = "[ $symbol $branch ]($style)"
+
+[git_status]
+style = "bg:#55524b fg:#d9822e"
+format = "[$all_status$ahead_behind ]($style)"
+
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "bg:#2a2a3c fg:#8a8377"
+format = "[ 󰥔 $time ]($style)"
+
+[character]
+success_symbol = "[❯](bold fg:#cfc2a6)"
+error_symbol = "[❯](bold fg:#c65b4e)"

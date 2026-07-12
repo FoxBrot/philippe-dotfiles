@@ -1,0 +1,101 @@
+/* ============================================================
+   Rofi theme — dark with cream accents, centered floating box
+   by Philippe Pereira (FoxBrot) (2026)
+============================================================ */
+
+* {
+    bg:          #1e1e2e;
+    bg-alt:      #2a2a3c;
+    fg:          #ebe3d3;
+    fg-dim:      #8a8377;
+    accent:      #cfc2a6;
+    accent-soft: #ebe3d3;
+    urgent:      #c65b4e;
+
+    background-color: transparent;
+    text-color:       @fg;
+    font:             "JetBrainsMono Nerd Font 12";
+}
+
+window {
+    transparency:     "real";
+    background-color: @bg;
+    border:           2px;
+    border-color:     @accent;
+    border-radius:    16px;
+    width:            520px;
+    location:         center;
+    anchor:           center;
+    padding:          0;
+}
+
+mainbox {
+    padding:  18px;
+    spacing:  14px;
+    children: [ inputbar, listview ];
+}
+
+/* ---- Search bar ---- */
+inputbar {
+    background-color: @bg-alt;
+    border-radius:    12px;
+    padding:          10px 14px;
+    spacing:          10px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    text-color: @accent;
+    font:       "JetBrainsMono Nerd Font 12";
+}
+
+entry {
+    placeholder:       "Search...";
+    placeholder-color: @fg-dim;
+    text-color:        @fg;
+    cursor:            text;
+}
+
+/* ---- Results list ---- */
+listview {
+    lines:        8;
+    columns:      1;
+    fixed-height: false;
+    spacing:      4px;
+    scrollbar:    false;
+    padding:      4px 0px 0px 0px;
+}
+
+element {
+    padding:       9px 12px;
+    spacing:       10px;
+    border-radius: 10px;
+    text-color:    @fg;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+element selected.normal {
+    background-color: @accent;
+    text-color:       @bg;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+element-icon {
+    size:             24px;
+    background-color: transparent;
+    vertical-align:   0.5;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    vertical-align:   0.5;
+}

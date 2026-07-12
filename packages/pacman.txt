@@ -12,3 +12,12 @@ bat
 eza
 zoxide
 pacman-contrib
+hyprlock
+swww
+awww
+imagemagick
+mpvpaper
+ffmpeg
+mpvpaper
+ffmpeg
+starship
